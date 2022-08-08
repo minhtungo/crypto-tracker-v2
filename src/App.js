@@ -1,10 +1,11 @@
-
+import { ThemeProvider } from './context/ThemeContext';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <ThemeProvider>
+      <Navbar />
+    </ThemeProvider>
   );
 }
 
