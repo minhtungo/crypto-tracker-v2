@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import { FaTwitter, FaFacebook, FaReddit, FaGithub } from 'react-icons/fa';
 import DOMPurify from 'dompurify';
+import { useParams } from 'react-router-dom';
 
 const CoinPage = () => {
   const [coin, setCoin] = useState({});
+  const params = useParams();
 
-  const url =
-    'https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&sparkline=true';
-
+  const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}?localization=false&sparkline=true`;
   useEffect(() => {
     const fetchCoins = async () => {
       const response = await axios.get(url);
@@ -21,7 +21,7 @@ const CoinPage = () => {
   return (
     <div className='rounded-div my-12 py-8'>
       <div className='flex py-8'>
-        <img className='w-20 mr-8 ' src={coin.image?.large} alt={coin.id} />
+        <img className='w-20 mr-8' src={coin.image?.large} alt={coin.id} />
         <div>
           <p className='text-3xl font-bold'>{coin?.name} price</p>
           <p>({coin.symbol?.toUpperCase()} / CAD)</p>
