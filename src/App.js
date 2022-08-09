@@ -9,6 +9,7 @@ import Account from './pages/Account';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import CoinPage from './pages/CoinPage';
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -32,6 +33,9 @@ function App() {
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/coin/:coinId' element={<CoinPage />}>
+          <Route path=':coinId' />
+        </Route>
       </Routes>
     </ThemeProvider>
   );
