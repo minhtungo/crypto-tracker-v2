@@ -35,7 +35,7 @@ const SignIn = () => {
         </form>
         <p className='my-4'>
           Don't have an account?{' '}
-          <Link to='signup' className='text-accent'>
+          <Link to='/signup' className='text-accent'>
             Sign Up
           </Link>
         </p>
