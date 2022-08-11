@@ -10,12 +10,12 @@ const SavedCoin = () => {
   const { user } = UserAuth();
 
   useEffect(() => {
-    onSnapshot(doc(db, 'users', `${user.email}`), (doc) => {
+    onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
       setCoins(doc.data()?.watchList);
     });
   }, [user.email]);
 
-  const coinPath = doc(db, 'users', `${user.email}`);
+  const coinPath = doc(db, 'users', `${user?.email}`);
   const deleteCoin = async (passedId) => {
     try {
       const result = coins.filter((item) => item.id !== passedId);
@@ -29,7 +29,7 @@ const SavedCoin = () => {
 
   return (
     <div>
-      {coins.length === 0 ? (
+      {coins?.length === 0 ? (
         <p>
           You don't have any saved coins.
           <Link to='/'>Click here to search for coins</Link>
@@ -44,7 +44,7 @@ const SavedCoin = () => {
             </tr>
           </thead>
           <tbody>
-            {coins.map((coin) => (
+            {coins?.map((coin) => (
               <tr key={coin.id} className='h-[60px] overflow-hidden'>
                 <td>{coin?.rank}</td>
                 <td>
